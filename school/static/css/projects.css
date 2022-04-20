@@ -1,0 +1,46 @@
+.project_block {
+    padding: 20px;
+    margin-top: 2%;
+    border-bottom: 1px solid black;
+}
+.project_block:first-child {
+    margin-top: 0%;
+}
+.project_block:last-child{
+    border-bottom: 0;
+}
+.projects {
+    background-color: rgb(212, 217, 217);
+}
+
+.project_image_block {
+    overflow: hidden;
+    height: 100%;
+}
+
+.project_image {
+    width:100%;
+    height:auto
+}
+
+
+.project_card {
+    margin-top: 2%;
+}
+
+.project_block {
+    background-color: rgb(212, 217, 217);
+}
+
+.project_info {
+    text-align: center;
+    height:100%
+}
+
+.info_field {
+    margin-top: 30px;
+}
+
+.title {
+    margin-top: 15%;
+}

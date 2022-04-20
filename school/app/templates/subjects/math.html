@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}Проекты по математике{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+
+    <center>
+        <span><strong>Проекты по математике наших учеников</strong></span>
+    </center>
+    <div class="container">
+        <div class="row">
+            {% for project in projects %}
+                <div class="project_card">
+                    <a href="{% url 'app:project' project.0.id %}">
+                        <div class="project_block">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div class="col-4">
+                                    <div class="project_image_block">
+                                        <img src="../media/{{project.1.0.image}}", class='project_image' alt='{{project.0.title}}'>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="project_info">
+                                        <span class='title'><strong>{{project.0.title}}</strong></span>
+                                        <br>
+                                        <br>
+                                        <span class='info_field'>{{project.0.short_description}}</span>
+                                        {% if project.0.creators %}
+                                            <br>
+                                            <br>
+                                            <span class='info_field'>авторы: {{project.0.creators}}</span>
+                                        {% endif %}
+                                        {% if project.0.curator %}
+                                            <br>
+                                            <br>
+                                            <span class='info_field'>куратор: {{project.0.curator}} </span>
+                                        {% endif %}
+                                        {% if project.0.description %}
+                                            <br>
+                                            <br>
+                                            <span class='description_field info_field'>{{project.0.description}}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>  
+                        </div>
+                    </a>
+                </div>  
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

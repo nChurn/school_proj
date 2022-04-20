@@ -1,0 +1,47 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block title %}
+Партнеры школы
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/partners.css' %}">
+    <div class="container partners">
+        {% for partner in partners %}
+        <a href="{% url 'app:partner' partner.0.id %}">
+            <div class="partner_block">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-4">
+                        <div class="partner_image_block">
+                            <img src="media/{{partner.1.0.image}}", class='partner_image' alt='{{partner.0.title}}'>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="partner_info">
+                            <strong><span>Название: {{partner.0.title}}</span></strong>
+                            <br>
+                            <span>{{partner.0.short_description}}</span>
+                            {% if partner.0.address %}
+                                <br>
+                                <span class='info_field'>ардес: {{partner.0.address}}</span>
+                            {% endif %}
+                            {% if partner.0.phone %}
+                                <br>
+                                <span class='info_field'>номер телефона: {{partner.0.phone}}</span>
+                            {% endif %}
+                            {% if parner.0.url %}
+                                <br>
+                                <span class='info_field'>ссылка: {{partner.0.url}}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>  
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+{% endblock %}

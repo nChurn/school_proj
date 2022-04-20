@@ -1,0 +1,33 @@
+.partner_block {
+    padding: 20px;
+    margin-top: 2%;
+    border-bottom: 1px solid black;
+}
+.partner_block:first-child {
+    margin-top: 0%;
+}
+.partner_block:last-child{
+    border-bottom: 0;
+}
+.partners {
+    background-color: rgb(212, 217, 217);
+}
+
+.partner_image_block {
+    overflow: hidden;
+    height: 100%;
+}
+
+.partner_image {
+    width:100%;
+    height:auto
+}
+
+
+.partner_info {
+    text-align: center;
+}
+
+.info_field {
+    margin-top: 5vh;
+}

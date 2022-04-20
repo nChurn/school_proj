@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}{{project.0.title}}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/project.css'%}">
+    <div class="container">
+        <div class="row">
+             <div class="col-4 project">   
+                 <div class="carousel flickity" data-flickity='{ "wrapAround": true}'>
+                     
+                     {% for image in project.1 %}
+                        <div class="carousel-cell">
+                            <img src="../media/{{image.image}}" alt="{{project.title}}" class=project_image>
+                        </div>
+                    {% endfor %}
+                 </div>
+             </div>
+             <div class="col-6">
+                <div class="project_info">
+                    <div class="title">
+                        <br><br>
+                        <span class='info_field'><strong>{{project.0.title}}</strong></span>
+                    </div>
+                    {% if project.0.short_description %}
+                    <br>
+                    <br>
+                    <div class="short_description">
+                        <span class='info_field'>Краткое описание: {{project.0.short_description}}</span>
+                    </div>
+                    {% endif %}
+            
+                    {%  if project.0.creators %}
+                        <br>
+                        <br>
+                        <span class='info_field'>Авторы: {{ project.0.creators }}</span>
+                    {% endif %}
+                    
+                    {% if project.0.curator %}
+                        <br>
+                        <br>
+                        <span class='info_field'>Куратор проекта: {{project.0.curator}}</span>
+                    {% endif %}
+                    {% if project.0.presentation %}
+                        <br>
+                        <br>
+                        <span class='info_field'>
+                            <strong><a href="../media/{{project.0.presentation}}">Скачать презентацию</a></strong>
+                        </span>
+                    {% endif %}
+
+                    {% if project.0.description %}
+                    <br>
+                    <br>
+                    <div class="description">
+                        <span class='info_field'>{{project.0.description }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>  
+        </div>
+    </div>
+    <script src='{% static "js/project.js"%}'></script>
+{% endblock %}

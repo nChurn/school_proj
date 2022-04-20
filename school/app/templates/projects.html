@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block title %}Школьные проекты{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/projects.css' %}">
+    <div class="container projects">
+        {% for project in projects %}
+        <a href="{% url 'app:project' project.0.id %}">
+            <div class="project_block">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-4">
+                        <div class="project_image_block">
+                            <img src="media/{{project.1.0.image}}", class='project_image' alt='{{project.0.title}}'>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="project_info">
+                            <strong><span>Название: {{project.0.title}}</span></strong>
+                            <br>
+                            <span>{{project.0.short_description}}</span>
+                            {% if project.0.creators %}
+                                <br>
+                                <span class='info_field'>адресс: {{project.0.creators}}</span>
+                            {% endif %}
+                            {% if project.0.description %}
+                                <br>
+                                <span class='description_field'>{{project.0.description}}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>  
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}{{partner.0.title}}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/partner.css'%}">
+    <div class="container">
+        <div class="row">
+             <div class="col-4 partner">   
+                 <div class="carousel flickity" data-flickity='{ "wrapAround": true}'>
+                     
+                     {% for image in partner.1 %}
+                        <div class="carousel-cell">
+                            <img src="../media/{{image.image}}" alt="{{partner.title}}" class=partner_image>
+                        </div>
+                    {% endfor %}
+                 </div>
+             </div>
+             <div class="col-6">
+                <div class="partner_info">
+                    <div class="title" style="{margin-left: 45%;}">
+                        <strong>{{partner.0.title}}</strong>
+                    </div>
+                    {% if partner.0.short_description %}
+                    <br>
+                    <div class="short_description">
+                        краткое описание: {{partner.0.short_description}}
+                    </div>
+                    {% endif %}
+                    {% if partner.0.address %}
+                    <br>
+                    <div class="address">
+                        адресс: {{partner.0.address}}
+                    </div>
+                    {% endif %}
+                    {% if partner.0.phone %}
+                    <br>
+                    <div class="phone">
+                        номер телефона: {{partner.0.phone}}
+                    </div>
+                    {% endif %}
+
+                    {% if partner.0.url %}
+                    <br>
+                    <div class="url">
+                        ссылка: {{partner.0.url}}
+                    </div>
+                    {% endif %}
+
+                    {% if partner.0.description %}
+                    <br>
+                    <div class="description">
+                        {{partner.0.description }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>  
+        </div>
+    </div>
+    <script src='{% static "js/partner.js"%}'></script>
+{% endblock %}
